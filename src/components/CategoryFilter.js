@@ -1,14 +1,12 @@
 import React, { useState } from "react";
 
-function CategoryFilter({ categories, filterTask }) {
-  const [selected, setSelected] = useState(false);
-  function handleSelectedClass(e) {
-    setSelected((selected) => !selected);
-    e.target.className = selected ? "selected" : null;
-  }
-
+function CategoryFilter({ categories, filter, selected }) {
   const displayedCategory = categories.map((category) => (
-    <button key={category} onClick={handleSelectedClass} className={""}>
+    <button
+      key={category}
+      className={selected === category ? "selected" : ""}
+      onClick={() => filter(category)}
+    >
       {category}
     </button>
   ));
